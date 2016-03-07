@@ -10,16 +10,25 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var scrollView:UIScrollView!
+    
+    let WIDTH:CGFloat = 558
+    let HEIGHT:CGFloat = 297
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+       
+        for var x = 1; x <= 8; x++ {
+            let img = UIImage(named: "\(x)")
+            let imgView = UIImageView(image: img)
+            
+            scrollView.addSubview(imgView)
+            imgView.frame = CGRectMake(-WIDTH + (WIDTH * CGFloat(x)), 160, WIDTH, HEIGHT)
+        }
+        scrollView.contentSize = CGSizeMake(WIDTH * 8, scrollView.frame.size.height)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    
 
 }
 
